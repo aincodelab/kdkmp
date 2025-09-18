@@ -1,0 +1,15 @@
+# Aktifkan mod_rewrite
+RewriteEngine On
+
+# ============================
+# Pengaturan Under Construction
+# ============================
+# Ubah ke "on" untuk aktif, "off" untuk nonaktif
+SetEnv UNDER_CONSTRUCTION on
+
+# ============================
+# Redirect jika under construction aktif
+# ============================
+RewriteCond %{ENV:UNDER_CONSTRUCTION} =on
+RewriteCond %{REQUEST_URI} !^/underconstruction\.html$ 
+RewriteRule ^(.*)$ /underconstruction.html [R=302,L]
