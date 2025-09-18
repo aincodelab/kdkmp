@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KDKMP TPP Sultra - Maintenance</title>
+<link rel="icon" type="image/x-icon" href="word.png">
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root {
+  --primary-color: #8ccaf3;
+  --secondary-color: #1e56f0;
+  --accent-color: #e74c3c;
+  --light-color: #f8f9fa;
+  --dark-color: #2c3e50;
+
+  --container-top-offset: -100px; /* geser kontainer sesuai kebutuhan */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--light-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.container-maintenance {
+  max-width: 600px;
+  width: 90%;
+  padding: 25px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  animation: fadeIn 1.5s ease forwards;
+  position: relative;
+  top: var(--container-top-offset);
+}
+
+.header-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.header-logos .logo {
+  height: 60px;
+  width: auto;
+  border-radius: 8px;
+  opacity: 0.85;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.header-logos .logo:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+p.subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+}
+
+.countdown {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  color: var(--light-color);
+  margin: 0 8px;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent-color);
+}
+
+.maintenance-icon {
+  font-size: 4rem;
+  color: var(--accent-color);
+  animation: bounce 2s infinite;
+  margin-bottom: 20px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background: rgba(0,0,0,0.2);
+  color: var(--light-color);
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Animasi */
+@keyframes bounce {
+  0%,100%{transform: translateY(0);}
+  50%{transform: translateY(-15px);}
+}
+
+@keyframes fadeIn {
+  0%{opacity:0; transform: scale(0.95);}
+  100%{opacity:1; transform: scale(1);}
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .container-maintenance { max-width: 90%; padding: 20px; }
+  h1 { font-size: 1.8rem; }
+  .countdown { font-size: 1.3rem; }
+  .header-logos .logo { height: 50px; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem; }
+  .countdown { font-size: 1.1rem; }
+  .header-logos .logo { height: 40px; }
+  .social-icons a { font-size: 1.3rem; margin: 0 6px; }
+  footer { font-size: 0.8rem; padding: 8px 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="container-maintenance">
+  <div class="header-logos">
+    <img src="LogoKemendesa.png" alt="Logo 1" class="logo">
+    <img src="LogoKemenKop.png" alt="Logo 2" class="logo">
+    <img src="LogoKopindoBaru.png" alt="Logo 3" class="logo">
+    <img src="logoKDKMP1.png" alt="Logo 4" class="logo">
+  </div>
+
+  <div class="maintenance-icon"><i class="fas fa-tools"></i></div>
+
+  <h1>Website Sedang Dalam Perawatan</h1>
+  <p class="subtitle">Kami sedang melakukan pembaruan. Mohon bersabar, website akan kembali dalam beberapa saat.</p>
+
+  <div class="countdown" id="countdown">00:00:00</div>
+
+  <div class="social-icons">
+    <a href="mailto:aynularyf@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    <a href="https://karyamandiri.com" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+    <a href="https://ainularif.karyamandiri.com" target="_blank" title="Author"><i class="fas fa-user"></i></a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 KDKMP TPP Sultra. Semua Hak Dilindungi.
+</footer>
+
+<script>
+// Countdown 2 hari
+const countdownEl = document.getElementById('countdown');
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate()+5);
+
+function updateCountdown(){
+  const now = new Date();
+  const diff = targetDate - now;
+  if(diff <= 0){ countdownEl.textContent="00:00:00"; return; }
+  const h=Math.floor(diff/(1000*60*60));
+  const m=Math.floor((diff%(1000*60*60))/(1000*60));
+  const s=Math.floor((diff%(1000*60))/1000);
+  countdownEl.textContent=`${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+</script>
+
+</body>
+</html>
